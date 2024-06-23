@@ -22,7 +22,7 @@ jobs:
           git fetch origin customer2
           git branch -la
           git checkout customer2
-          git rebase main
+          git rebase main --skip
           git push origin customer2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
