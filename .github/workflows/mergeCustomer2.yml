@@ -1,0 +1,26 @@
+name: Automate Merges to Customer 2 Branch
+
+on:
+  pull_request:
+    branches:
+      - customer2
+  push:
+    branches:
+      - main
+
+jobs:
+  merge_customer1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Merge requests from main
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "<>"
+          git checkout customer2
+          git merge ${{ github.event.pull_request.head.ref }}
+          git push origin customer2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
