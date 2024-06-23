@@ -20,8 +20,9 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "<>"
           git fetch origin customer2
+          git branch -la
           git checkout customer2
-          git merge ${{ github.event.pull_request.head.ref }}
+          git merge main --no-edit
           git push origin customer2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
