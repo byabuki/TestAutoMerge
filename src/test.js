@@ -9,3 +9,7 @@ function foo() {
 function bar() {
     return 'bar';
 }
+
+function xyz() {
+    return 'xyz';
+}
