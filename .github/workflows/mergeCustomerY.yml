@@ -17,11 +17,12 @@ jobs:
 
       - name: Merge requests from main
         run: |
+          git --version
           git config user.name "GitHub Actions"
           git config user.email "<>"
-          git fetch origin customerY
+          git fetch 
           git checkout customerY
-          git merge main --no-edit --allow-unrelated-histories
+          git merge main --no-edit --allow-unrelated-histories --strategy=ort -Xtheirs
           git push origin customerY
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
