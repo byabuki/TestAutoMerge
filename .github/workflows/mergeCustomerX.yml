@@ -22,7 +22,16 @@ jobs:
           git fetch origin customerX
           git branch -la
           git checkout customerX
-          git merge main --no-edit --allow-unrelated-histories
+          # Merge branch-to-merge with the --no-commit option to prevent automatic commit
+          git merge main --no-commit --allow-unrelated-histories
+          # Resolve conflicts by always taking the version from branch-to-merge
+          git ls-files -u | awk '{print $4}' | while read conflicted_file
+          do
+              git checkout --theirs "$conflicted_file"
+              git add "$conflicted_file"
+          done
+          # Commit the merge
+          git commit -m "Merge branch main into customerX
           git push origin customerX
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
