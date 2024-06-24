@@ -22,7 +22,7 @@ jobs:
           git fetch origin customerX
           git branch -la
           git checkout customerX
-          git merge main --no-edit
+          git merge main --no-edit --allow-unrelated-histories
           git push origin customerX
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
