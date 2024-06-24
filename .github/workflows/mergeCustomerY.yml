@@ -20,9 +20,10 @@ jobs:
           git --version
           git config user.name "GitHub Actions"
           git config user.email "<>"
-          git fetch origin customerY
+          git config pull.rebase false
+          git fetch 
           git checkout customerY
-          git merge main --no-edit --allow-unrelated-histories --strategy=ort
+          git pull origin main
           git push origin customerY
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
