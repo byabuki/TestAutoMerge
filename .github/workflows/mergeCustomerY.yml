@@ -1,4 +1,4 @@
-name: Automate Merges to Customer Y Branch
+name: Automate Cherry Picks to Customer Y Branch
 
 on:
   pull_request:
@@ -15,14 +15,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Merge requests from main
+      - name: Cherry pick commits from main
         run: |
           git --version
           git config user.name "GitHub Actions"
           git config user.email "<>"
-          git fetch 
+          git fetch
           git checkout customerY
-          git merge main --no-edit --allow-unrelated-histories --strategy=ort -Xtheirs
+          git cherry-pick -X ours main^
           git push origin customerY
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
