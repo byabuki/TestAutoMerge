@@ -22,7 +22,7 @@ jobs:
           git config user.email "<>"
           git fetch
           git checkout customerY
-          git cherry-pick -X ours main~
+          git cherry-pick -X theirs main~1
           git push origin customerY
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
