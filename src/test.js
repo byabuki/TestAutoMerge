@@ -11,5 +11,6 @@ function bar() {
 }
 
 function xyz() {
-    return 'xyz';
+    const strings = { hello: 'world' };
+    return strings.hello;
 }
