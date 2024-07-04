@@ -22,7 +22,9 @@ jobs:
           git config user.email "<>"
           git fetch
           git checkout main
+          git log --oneline -n 10
           git checkout customerY
+          git log --oneline -n 10
           git cherry-pick -X theirs main^
           git push origin customerY
         env:
